@@ -9,7 +9,7 @@
 <body>
 	<h1> Job Details:</h1>
 	
-	<form id="jobForm" method="post" action="index.htm" enctype="application/x-www-form-urlencoded">
+	<form id="jobForm" method="post" action="index.htm" enctype="application/x-www-form-urlencoded" onsubmit="selectAllOptions()">
 		<table border="1">
 			<tr>
 				<td class="tableDesc"> Job Title: </td>
@@ -19,7 +19,7 @@
 				<td class="tableDesc"> Description: </td>
 				<td> <textarea name="desc" rows="4" cols="21" maxlength="500"></textarea> 
 				<br><br> Brief description should have at most 500 characters</td>
-			</tr>
+			</tr>	
 			<tr>
 				<td class="tableDesc"> Company Name: </td>
 				<td> <input name="companyName"></input> </td>
@@ -84,7 +84,7 @@
 							<input type="button" id="btnRemove" onclick="removeFromList()" value="&lt;&lt; Remove" /> 
 						</div>		
 						<div>
-						<select id="rightValues" size="5" multiple></select>
+						<select id="rightValues" size="5" multiple name="qualifications[]"></select>
 						</div>	
 					</section>
 					
@@ -106,6 +106,13 @@
 								var selectedItem = document.getElementById("rightValues")[0];
 								$("#leftValues").append(selectedItem);
 							}
+						}
+						
+						function selectAllOptions()	{
+						  var selObj = document.getElementById("rightValues");
+						  for (var i=0; i<selObj.options.length; i++) {
+							selObj.options[i].selected = true;
+						  }
 						}
 					</script>
 				</td>
